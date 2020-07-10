@@ -8,12 +8,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.provider.MediaStore;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
 
 import androidx.fragment.app.Fragment;
 
@@ -43,12 +46,12 @@ public class frag_imgs extends Fragment {
         final ImageAdapter ia = new ImageAdapter(mContext);
         GridView gv = (GridView) getView().findViewById(R.id.ImgGridView);
         gv.setAdapter(ia);
-//        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                //ia.callImageViewer(position);
-//                return;
-//            }
-//        });
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                ia.callImageViewer(position);
+                return;
+            }
+        });
     }
 
     /* Adapter class */
@@ -66,8 +69,8 @@ public class frag_imgs extends Fragment {
         }
 
         public final void callImageViewer(int selectedIndex){
-            Intent i = new Intent(mContext, frag_imgs.class);
             String imgPath = getImageInfo(imgData, geoData, thumbsIDList.get(selectedIndex));
+            Intent i = new Intent(mContext, act_imgpop.class);
             i.putExtra("filename", imgPath);
             startActivityForResult(i, 1);
         }
