@@ -13,15 +13,14 @@ public class VPAdapter extends FragmentPagerAdapter {
     public VPAdapter(FragmentManager fm) {
         super(fm);
         items = new ArrayList<Fragment>();
-        items.add(new Fragment1());
-        items.add(new Fragment2());
+        items.add(new frag_contacts());
+        items.add(new frag_imgs());
         items.add(new Fragment3());
 
         itext.add("Contacts");
         itext.add("Gallery");
         itext.add("Unknown");
     }
-
     public CharSequence getPageTitle(int position){
         return itext.get(position);
     }
@@ -29,7 +28,6 @@ public class VPAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         return items.get(position);
     }
-
     @Override
     public int getCount() {
         return items.size();
