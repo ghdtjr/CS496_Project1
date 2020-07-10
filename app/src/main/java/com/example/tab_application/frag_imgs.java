@@ -30,6 +30,15 @@ public class frag_imgs extends Fragment {
         mContext = getActivity();
     }
 
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.tab2_imgs, container, false);
+        GridView gv = view.findViewById(R.id.ImgGridView);
+        mContext = getActivity();
+        final ImageAdapter ia = new ImageAdapter(mContext);
+        gv.setAdapter(ia);
+        return view;
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -37,20 +46,12 @@ public class frag_imgs extends Fragment {
         final ImageAdapter ia = new ImageAdapter(mContext);
         GridView gv = (GridView) getView().findViewById(R.id.ImgGridView);
         gv.setAdapter(ia);
-
-        return;
 //        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 //                //ia.callImageViewer(position);
 //                return;
 //            }
 //        });
-    }
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab2_imgs, container, false);
-        GridView gv = view.findViewById(R.id.ImgGridView);
-        return view;
     }
 
     /* Adapter class */
@@ -148,7 +149,7 @@ public class frag_imgs extends Fragment {
                     }
                 }while (imageCursor.moveToNext());
             }
-            imageCursor.close();
+            // imageCursor.close();
             return;
         }
         private String getImageInfo(String ImageData, String Location, String thumbID){
