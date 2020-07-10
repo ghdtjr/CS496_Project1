@@ -33,9 +33,6 @@ public class frag_imgs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab2_imgs, container, false);
         GridView gv = view.findViewById(R.id.ImgGridView);
-        mContext = getActivity();
-        final ImageAdapter ia = new ImageAdapter(mContext);
-        gv.setAdapter(ia);
         return view;
     }
 
