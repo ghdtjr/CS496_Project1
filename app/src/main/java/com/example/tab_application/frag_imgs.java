@@ -1,31 +1,21 @@
 package com.example.tab_application;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.provider.MediaStore;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -38,55 +28,29 @@ public class frag_imgs extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
-        check_stor_permission();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mContext = getActivity();
         final ImageAdapter ia = new ImageAdapter(mContext);
         GridView gv = (GridView) getView().findViewById(R.id.ImgGridView);
         gv.setAdapter(ia);
 
-        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //ia.callImageViewer(position);
-                return;
-            }
-        });
+        return;
+//        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//                //ia.callImageViewer(position);
+//                return;
+//            }
+//        });
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab2_imgs, container, false);
         GridView gv = view.findViewById(R.id.ImgGridView);
         return view;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        //권한을 허용 했을 경우
-        if (requestCode == 1) {
-            int length = permissions.length;
-            for (int i = 0; i < length; i++) {
-                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("MainActivity", "권한 허용 : " + permissions[i]);
-                }
-            }
-        }
-    }
-
-
-    public void check_stor_permission(){
-        String temp = "";
-        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            temp +=Manifest.permission.READ_EXTERNAL_STORAGE + " ";
-        }
-
-        if (TextUtils.isEmpty(temp) == false){
-            ActivityCompat.requestPermissions(getActivity(), temp.trim().split(" "),1);
-        }else{
-            Toast.makeText(getActivity(), "All Permission Allowed", Toast.LENGTH_SHORT).show();
-        }
     }
 
     /* Adapter class */
@@ -125,23 +89,27 @@ public class frag_imgs extends Fragment {
         public long getItemId(int position) {
             return position;
         }
+        public void call_single(int pos){
+
+        }
 
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView;
             if (convertView == null){
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(95, 95));
                 imageView.setAdjustViewBounds(false);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setPadding(2, 2, 2, 2);
             }else{
                 imageView = (ImageView) convertView;
             }
             BitmapFactory.Options bo = new BitmapFactory.Options();
             bo.inSampleSize = 8;
             Bitmap bmp = BitmapFactory.decodeFile(thumbsDataList.get(position), bo);
-            Bitmap resized = Bitmap.createScaledBitmap(bmp, 95, 95, true);
-            imageView.setImageBitmap(resized);
+
+            // bitmap rotation
+            Matrix rotate_mat = new Matrix();
+            rotate_mat.postRotate(90);
+            Bitmap rotated_bmp = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), rotate_mat, false);
+            imageView.setImageBitmap(rotated_bmp);
 
             return imageView;
         }
@@ -183,7 +151,6 @@ public class frag_imgs extends Fragment {
             imageCursor.close();
             return;
         }
-
         private String getImageInfo(String ImageData, String Location, String thumbID){
             String imageDataPath = null;
             String[] proj = {MediaStore.Images.Media._ID,
