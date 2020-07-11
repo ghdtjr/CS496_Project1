@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
@@ -12,9 +13,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-
+import com.google.android.material.tabs.TabLayout;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -50,8 +50,7 @@ public class act_imgpop extends Activity implements OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btn_back:
-                Intent intent = new Intent(mContext, frag_imgs.class);
-                startActivity(intent);
+                this.finish();
                 break;
         }
     }

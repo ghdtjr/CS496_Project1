@@ -10,12 +10,21 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Other#newInstance} factory method to
+ * Use the {@link Fragment_Gallery#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Other extends Fragment {
+public class Fragment_Gallery extends Fragment {
 
-    public Fragment_Other() {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public Fragment_Gallery() {
         // Required empty public constructor
     }
 
@@ -25,11 +34,11 @@ public class Fragment_Other extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_Other.
+     * @return A new instance of fragment Fragment_Gallery.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_Other newInstance(String param1, String param2) {
-        Fragment_Other fragment = new Fragment_Other();
+    public static Fragment_Gallery newInstance(String param1, String param2) {
+        Fragment_Gallery fragment = new Fragment_Gallery();
 
         return fragment;
     }
@@ -37,12 +46,13 @@ public class Fragment_Other extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__other, container, false);
+        return inflater.inflate(R.layout.fragment__gallery, container, false);
     }
 }
