@@ -96,10 +96,6 @@ public class Fragment_Gallery extends Fragment {
             startActivityForResult(i, 1);
         }
 
-        public boolean deleteSelected(int sIndex){
-            return true;
-        }
-
         public int getCount() {
             return thumbsIDList.size();
         }
