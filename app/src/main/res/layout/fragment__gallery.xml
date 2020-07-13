@@ -9,8 +9,8 @@
         android:layout_height="fill_parent"
         android:columnWidth="96dp"
         android:gravity="center"
-        android:horizontalSpacing="5dp"
-        android:verticalSpacing="-8dp"
+        android:horizontalSpacing="3dp"
+        android:verticalSpacing="3dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth" />
 </LinearLayout>
