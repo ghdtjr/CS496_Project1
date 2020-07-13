@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tab = findViewById(R.id.tabs);
         tab.setupWithViewPager(vp);
 
-
-
 //        // add images on the tab
 //        ArrayList<Integer> images = new ArrayList<>();
 //        images.add(R.drawable.cal);
