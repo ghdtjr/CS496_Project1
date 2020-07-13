@@ -32,6 +32,15 @@ public class act_imgpop extends Activity implements OnClickListener{
         /* back button */
         ImageButton btn = (ImageButton)findViewById(R.id.btn_back);
         btn.setOnClickListener(this);
+
+        /* prefer button */
+        final ImageButton prefer_btn = (ImageButton)findViewById(R.id.prefer_btn);
+        prefer_btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prefer_btn.setSelected(true);
+            }
+        });
     }
 
     /* function for back button
