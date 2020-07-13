@@ -1,17 +1,13 @@
 package com.example.tab_application;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
@@ -42,7 +38,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ItemViewHolder
         holder.phone.setText(listData.get(position).getPhone());
     }
 
-
     @Override
     public boolean onItemMove(int from_position, int to_position) {
         //이동할 객체 저장
@@ -54,7 +49,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ItemViewHolder
         // Adapter에 데이터 이동알림
         notifyItemMoved(from_position,to_position);
         return true;
-
     }
 
     @Override

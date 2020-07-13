@@ -29,8 +29,6 @@ public class AddPhoneBook extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent();
-
                 finish();
             }
         });

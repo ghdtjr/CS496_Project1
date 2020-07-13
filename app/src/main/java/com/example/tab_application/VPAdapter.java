@@ -15,7 +15,7 @@ public class VPAdapter extends FragmentPagerAdapter {
         items = new ArrayList<Fragment>();
         items.add(new Fragment_Contact());
         items.add(new Fragment_Gallery());
-        items.add(new Fragment3());
+        items.add(new Fragment_Calendar());
 
         itext.add("Contacts");
         itext.add("Gallery");

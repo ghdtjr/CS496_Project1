@@ -19,31 +19,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Contact#newInstance} factory method to
- * create an instance of this fragment.
- */
-
 
 public class Fragment_Contact extends Fragment {
     protected ArrayList<PhoneBook> phoneBooks = new ArrayList<PhoneBook>();
     protected ListAdapter adapter;
     ItemTouchHelper helper;
-
-    public Fragment_Contact() {
-
-    }
-
-    public static Fragment_Contact newInstance(String param1, String param2) {
-        Fragment_Contact fragment = new Fragment_Contact();
-        return fragment;
-    }
 
     @Override
     //called when fragment is created
@@ -65,16 +48,15 @@ public class Fragment_Contact extends Fragment {
             byte[] buffer = new byte[fileSize];
             is.read(buffer);
             is.close();
-
             json = new String(buffer, "UTF-8");
         }
         catch (IOException ex)
         {
             ex.printStackTrace();
         }
-
         return json;
     }
+
     @Override
     //called for composition of the screen after onCreate
     //similar with onCreate method of Activity
@@ -88,17 +70,14 @@ public class Fragment_Contact extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         LinearLayoutManager lm = new LinearLayoutManager(context);
 
-
         lm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(lm);
         adapter = new ListAdapter(phoneBooks);
         recyclerView.setAdapter(adapter);
 
-
         helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
         //RecyclerView에 ItemTouchHelper 붙이기
         helper.attachToRecyclerView(recyclerView);
-
 
         Button button = (Button) view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +93,6 @@ public class Fragment_Contact extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-
         if(resultCode == Activity.RESULT_OK){
             if(data.hasExtra("name") && data.hasExtra("phone")){
                 String name = data.getStringExtra("name");
