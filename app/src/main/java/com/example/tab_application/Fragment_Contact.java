@@ -114,12 +114,7 @@ public class Fragment_Contact extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        JSONObject jsonMain = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
-        JSONObject jsonObject = new JSONObject();
-        String jsonString = null;
-        String fileName = "phonebook.json";
-        FileOutputStream fileOutputStream;
+
         if(resultCode == Activity.RESULT_OK){
             if(data.hasExtra("name") && data.hasExtra("phone")){
                 String name = data.getStringExtra("name");
@@ -127,21 +122,6 @@ public class Fragment_Contact extends Fragment {
                 String phone = data.getStringExtra("phone");
                 PhoneBook phoneBook = new PhoneBook(name, phone);
                 phoneBooks.add(phoneBook);
-                /*try {
-                    jsonObject.put("name", name);
-                    jsonObject.put("phone", phone);
-                    jsonString = jsonObject.toString();
-                    jsonMain.put("phonebook",jsonObject);
-                    fileOutputStream = getActivity().openFileOutput(fileName, Context.MODE_APPEND);
-                    fileOutputStream.write(jsonMain.toString().getBytes());
-                    fileOutputStream.close();
-                    System.out.println(jsonMain.toString());
-                } catch (JSONException | FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-*/
                 adapter.notifyDataSetChanged();
                 Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
             }

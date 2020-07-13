@@ -12,18 +12,17 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddPhoneBook extends AppCompatActivity {
-
+public class AddSchedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_phonebook);
+        setContentView(R.layout.add_schedule);
 
-        Button backButton = (Button) findViewById(R.id.back);
-        Button saveButton = (Button) findViewById(R.id.save);
+        Button backButton = (Button) findViewById(R.id.back_to_calendar);
+        Button saveButton = (Button) findViewById(R.id.save_schedule);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddPhoneBook.super.onBackPressed();
+                AddSchedule.super.onBackPressed();
             }
         });
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -40,13 +39,13 @@ public class AddPhoneBook extends AppCompatActivity {
     public void finish(){
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
-        EditText name = (EditText) findViewById(R.id.new_name);
-        EditText phone = (EditText) findViewById(R.id.new_phone);
-        String n = (String) name.getText().toString();
-        String p = (String) phone.getText().toString();
-        if(!(n.isEmpty()  && p.isEmpty())){
-            bundle.putString("name", n.toString());
-            bundle.putString("phone", p.toString());
+        EditText title = (EditText) findViewById(R.id.new_title);
+        EditText time = (EditText) findViewById(R.id.new_time);
+        String ntitle = (String) title.getText().toString();
+        String ntime = (String) time.getText().toString();
+        if(!(ntitle.isEmpty()  && ntime.isEmpty())){
+            bundle.putString("title", ntitle.toString());
+            bundle.putString("time", ntime.toString());
             intent.putExtras(bundle);
             setResult(Activity.RESULT_OK, intent);
         }
@@ -55,6 +54,7 @@ public class AddPhoneBook extends AppCompatActivity {
         }
         super.finish();
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //Context context = getApplicationContext();
@@ -62,5 +62,4 @@ public class AddPhoneBook extends AppCompatActivity {
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
     }
-
 }

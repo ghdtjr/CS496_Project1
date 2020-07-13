@@ -19,7 +19,7 @@ public class VPAdapter extends FragmentPagerAdapter {
 
         itext.add("Contacts");
         itext.add("Gallery");
-        itext.add("Unknown");
+        itext.add("Calendar");
     }
     public CharSequence getPageTitle(int position){
         return itext.get(position);

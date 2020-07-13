@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode==1)
         {
-            for(int i=0; i<grantResults.length; i++)
+            for (int i=0; i<grantResults.length; i++)
             {
                 //허용됬다면
-                if(grantResults[i]==PackageManager.PERMISSION_GRANTED){
+                if (grantResults[i]==PackageManager.PERMISSION_GRANTED){
                 }
                 else {
                     Toast.makeText(getApplicationContext(),"앱권한설정하세요",Toast.LENGTH_LONG).show();

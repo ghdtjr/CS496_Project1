@@ -69,7 +69,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ItemViewHolder
         return listData.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder{
+    public static class ItemViewHolder extends RecyclerView.ViewHolder{
         protected TextView name;
         protected TextView phone;
 
