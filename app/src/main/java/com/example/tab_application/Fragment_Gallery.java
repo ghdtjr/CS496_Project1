@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
@@ -19,12 +16,10 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -58,7 +53,7 @@ public class Fragment_Gallery extends Fragment {
     }
 
     /* TAB MOVE DOES NOT CALl
-     *  APP LEAVE AND RETURN CALL THIS */
+     * LEAVE APP AND RETURN THEN, CALL THIS */
     @Override
     public void onResume() {
         super.onResume();
@@ -96,10 +91,6 @@ public class Fragment_Gallery extends Fragment {
             startActivityForResult(i, 1);
         }
 
-        public boolean deleteSelected(int sIndex){
-            return true;
-        }
-
         public int getCount() {
             return thumbsIDList.size();
         }
@@ -120,19 +111,13 @@ public class Fragment_Gallery extends Fragment {
             }else{
                 imageView = (ImageView) convertView;
             }
-            BitmapFactory.Options bo = new BitmapFactory.Options();
-            bo.inSampleSize = 8;
-            Bitmap bmp = BitmapFactory.decodeFile(thumbsDataList.get(position), bo);
-
-            // bitmap rotation
-            Matrix rotate_mat = new Matrix();
-            rotate_mat.postRotate(90);
-            Bitmap rotated_bmp = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), rotate_mat, false);
-            imageView.setImageBitmap(rotated_bmp);
+            /* Show image */
+            Glide.with(getActivity()).load(thumbsDataList.get(position)).into(imageView);
 
             return imageView;
         }
 
+        /* Access to the storage and save the uri of the images */
         private void getThumbInfo(ArrayList<String> thumbsIDs, ArrayList<String> thumbsDatas){
             String[] proj = {MediaStore.Images.Media._ID,
                     MediaStore.Images.Media.DATA,
@@ -167,7 +152,6 @@ public class Fragment_Gallery extends Fragment {
                     }
                 }while (imageCursor.moveToNext());
             }
-            // imageCursor.close();
             return;
         }
         private String getImageInfo(String ImageData, String Location, String thumbID){
@@ -185,7 +169,6 @@ public class Fragment_Gallery extends Fragment {
                     imageDataPath = imageCursor.getString(imgData);
                 }
             }
-            // imageCursor.close();
             return imageDataPath;
         }
     }
