@@ -112,7 +112,8 @@ public class Fragment_Gallery extends Fragment {
                 imageView = (ImageView) convertView;
             }
             /* Show image */
-            Glide.with(getActivity()).load(thumbsDataList.get(position)).into(imageView);
+            Glide.with(getActivity()).load(thumbsDataList.get(position)).override(450,350).centerCrop().into(imageView);
+
 
             return imageView;
         }
