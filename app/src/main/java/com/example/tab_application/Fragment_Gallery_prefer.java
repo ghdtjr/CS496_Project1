@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Fragment_Gallery_prefer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment__gallery_prefer);
         mContext = this;
-
+        TabLayout tab = findViewById(R.id.tabs2);
+        tab.getTabAt(0).setIcon(R.drawable.favorite_default);
         /* create adapter */
         final MyAdapter adapter = new MyAdapter (mContext);
 
