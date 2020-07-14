@@ -11,4 +11,7 @@ public class prefer_arr extends android.app.Application {
     public void add_prefer_arr(String imgpath){
         this.prefer_array.add(imgpath);
     }
+    public boolean check_contains(String string){
+        return this.prefer_array.contains(string);
+    }
 }

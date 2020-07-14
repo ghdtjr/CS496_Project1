@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
 public class act_imgpop extends Activity implements OnClickListener{
     private Context mContext;
 
@@ -40,7 +42,8 @@ public class act_imgpop extends Activity implements OnClickListener{
             public void onClick(View view) {
                 prefer_btn.setSelected(true);
                 prefer_arr path_arr = (prefer_arr) getApplication();
-                path_arr.add_prefer_arr(imgPath);
+                if(!path_arr.check_contains(imgPath))
+                    path_arr.add_prefer_arr(imgPath);
             }
         });
     }
