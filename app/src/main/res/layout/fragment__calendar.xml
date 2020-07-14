@@ -38,7 +38,7 @@
             android:layout_marginBottom="20dp"
             android:background="#005e78"
             android:src="@drawable/add"
-            app:backgroundTint="#005e78"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            app:backgroundTint="#c76476"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </RelativeLayout>
 
