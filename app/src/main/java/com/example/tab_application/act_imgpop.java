@@ -11,8 +11,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
-
 public class act_imgpop extends Activity implements OnClickListener{
     private Context mContext;
 
