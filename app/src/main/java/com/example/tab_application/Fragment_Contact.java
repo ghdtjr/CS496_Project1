@@ -3,14 +3,18 @@ package com.example.tab_application;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +32,7 @@ public class Fragment_Contact extends Fragment {
     protected ArrayList<PhoneBook> phoneBooks = new ArrayList<PhoneBook>();
     protected ListAdapter adapter;
     ItemTouchHelper helper;
+    RecyclerView recyclerView;
 
     @Override
     //called when fragment is created
@@ -68,7 +73,7 @@ public class Fragment_Contact extends Fragment {
         View view = inflater.inflate(R.layout.fragment__contact, container, false);
         Context context = view.getContext();
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         LinearLayoutManager lm = new LinearLayoutManager(context);
 
         lm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -76,10 +81,12 @@ public class Fragment_Contact extends Fragment {
         adapter = new ListAdapter(phoneBooks);
         recyclerView.setAdapter(adapter);
 
+
         helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
         //RecyclerView에 ItemTouchHelper 붙이기
         helper.attachToRecyclerView(recyclerView);
 
+        //Add new button
         ImageButton button = (ImageButton) view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +95,7 @@ public class Fragment_Contact extends Fragment {
                 startActivityForResult(intent, Activity.RESULT_FIRST_USER);
             }
         });
+
         return view;
     }
 
@@ -105,6 +113,14 @@ public class Fragment_Contact extends Fragment {
                 Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+    private void setUpRecyclerView(){
+        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                helper.onDraw(c,parent, state);
+            }
+        });
     }
 
     //Parsing
