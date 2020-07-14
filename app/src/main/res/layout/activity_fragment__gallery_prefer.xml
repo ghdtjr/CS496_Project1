@@ -27,6 +27,6 @@
         android:layout_marginBottom="20dp"
         android:background="#005e78"
         android:scaleType="fitCenter"
-        android:src="@drawable/star_btn_default_1"
+        android:src="@drawable/star_btn_default_2"
         app:backgroundTint="#c76476"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 </FrameLayout>
