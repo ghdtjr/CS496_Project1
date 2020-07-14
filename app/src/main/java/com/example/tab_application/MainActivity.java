@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     String[] permission_list = {Manifest.permission.READ_EXTERNAL_STORAGE};

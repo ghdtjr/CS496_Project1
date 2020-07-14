@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -49,6 +50,17 @@ public class Fragment_Gallery extends Fragment {
                 }
             });
         }
+
+        /* Go to prefer album button */
+        ImageButton go_prefer = (ImageButton) view.findViewById(R.id.prefer_change_btn);
+        go_prefer.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, Fragment_Gallery_prefer.class);
+                startActivityForResult(i, 1);
+            }
+        });
+
         return view;
     }
 
@@ -57,7 +69,6 @@ public class Fragment_Gallery extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.v("check here?", "HERE");
         mContext = getActivity();
         GridView gv = (GridView) getView().findViewById(R.id.ImgGridView);
         final ImageAdapter ia = new ImageAdapter(mContext);
@@ -102,7 +113,7 @@ public class Fragment_Gallery extends Fragment {
         public long getItemId(int position) {
             return position;
         }
-
+        /* setting the data which will be placed on the view */
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView;
             if (convertView == null){
@@ -113,7 +124,6 @@ public class Fragment_Gallery extends Fragment {
             }
             /* Show image */
             Glide.with(getActivity()).load(thumbsDataList.get(position)).override(450,350).centerCrop().into(imageView);
-
 
             return imageView;
         }

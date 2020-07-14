@@ -12,6 +12,7 @@ public class VPAdapter extends FragmentPagerAdapter {
 
     public VPAdapter(FragmentManager fm) {
         super(fm);
+
         items = new ArrayList<Fragment>();
         items.add(new Fragment_Contact());
         items.add(new Fragment_Gallery());

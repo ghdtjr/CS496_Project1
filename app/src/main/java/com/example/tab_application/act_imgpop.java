@@ -23,7 +23,7 @@ public class act_imgpop extends Activity implements OnClickListener{
         /* get uri from intent */
         Intent i = getIntent();
         Bundle extras = i.getExtras();
-        String imgPath = extras.getString("filename");
+        final String imgPath = extras.getString("filename");
 
         /* show fullsized image */
         ImageView iv = (ImageView)findViewById(R.id.imageView);
@@ -39,6 +39,8 @@ public class act_imgpop extends Activity implements OnClickListener{
             @Override
             public void onClick(View view) {
                 prefer_btn.setSelected(true);
+                prefer_arr path_arr = (prefer_arr) getApplication();
+                path_arr.add_prefer_arr(imgPath);
             }
         });
     }
