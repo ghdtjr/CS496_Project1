@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,14 +17,20 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
-        android:text="Add Contact"
-        >
-    </Button>
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/recyclerView"
+        android:layout_gravity="bottom|right"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#005e78"
+        android:scaleType="fitCenter"
+        android:src="@drawable/final_add"
+        app:backgroundTint="#005e78">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
-</LinearLayout>
+</RelativeLayout>

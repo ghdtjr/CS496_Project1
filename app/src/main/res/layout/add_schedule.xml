@@ -39,7 +39,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="#26ae90"
+            android:background="#005e78"
+            android:textColor="#FFFFFF"
             android:text="Save">
         </Button>
         <Button
@@ -47,7 +48,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="#26ae90"
+            android:background="#005e78"
+            android:textColor="#FFFFFF"
             android:text="Back">
         </Button>
     </LinearLayout>

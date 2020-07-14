@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment3"
+    tools:context=".Fragment_Gallery"
     android:orientation="vertical">
 
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusedMonthDateColor="#005e78">
     </CalendarView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -21,19 +23,24 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_calendar"
             android:layout_width="match_parent"
-            android:layout_height="127dp"
+            android:layout_height="178dp"
             android:background="#FFFFFF"
             android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/schedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_alignBottom="@id/recyclerView_calendar"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#005e78"
+            android:src="@drawable/add"
+            app:backgroundTint="#005e78"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-            android:text="Add Schedule"></Button>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

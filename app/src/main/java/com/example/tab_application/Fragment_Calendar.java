@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -63,7 +64,7 @@ public class Fragment_Calendar extends Fragment{
             }
         });
 
-        Button button = (Button) view.findViewById(R.id.schedule);
+        ImageButton button = (ImageButton) view.findViewById(R.id.schedule);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
