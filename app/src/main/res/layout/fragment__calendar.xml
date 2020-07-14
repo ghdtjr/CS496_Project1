@@ -24,7 +24,7 @@
             android:id="@+id/recyclerView_calendar"
             android:layout_width="match_parent"
             android:layout_height="178dp"
-            android:background="#FFFFFF"
+            android:background="#FAFAFA"
             android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -35,7 +35,6 @@
             android:layout_alignParentRight="true"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
             android:background="#005e78"
             android:src="@drawable/add"
             app:backgroundTint="#c76476"></com.google.android.material.floatingactionbutton.FloatingActionButton>
